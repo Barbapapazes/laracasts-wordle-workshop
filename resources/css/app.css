@@ -1,0 +1,215 @@
+:root {
+    --correct-color: #47d747;
+    --present-color: #f7f749;
+    --absent-color: #888;
+}
+
+html {
+    font-size: 13px;
+}
+
+@media (min-width: 900px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    background-color: #0e1626;
+    color: white;
+    margin: 0;
+    font-family: Poppins, sans-serif;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    overflow: auto;
+}
+
+
+/**
+ * Game Board Styles
+ */
+
+#game-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+#game {
+    color: white;
+    background-image: linear-gradient(153deg, #1c2b45 13%, #0c1321 85%), linear-gradient(149deg, #fec63b 3%, rgba(254, 198, 59, 0) 80%);
+    position: relative;
+    border-radius: 20px;
+    width: auto;
+    max-width: max-content;
+    margin: 2rem 0;
+}
+
+#game:before {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: -7px;
+    background-image: linear-gradient(138deg, #6ba0e2 -20%, #131e32 105%);
+    z-index: -1;
+    border-radius: 25px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+.tile {
+    outline: 1px solid rgba(73, 110, 158, .1);
+    width: 15vw;
+    height: 15vw;
+    max-width: calc(100vh / 13);
+    max-height: calc(100vh / 13);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #496e9e;
+}
+
+.row:first-of-type .tile:first-of-type {
+    border-top-left-radius: 20px;
+}
+
+.row:first-of-type .tile:last-of-type {
+    border-top-right-radius: 20px;
+}
+
+.row:last-of-type .tile:first-of-type {
+    border-bottom-left-radius: 20px;
+}
+
+.row:last-of-type .tile:last-of-type {
+    border-bottom-right-radius: 20px;
+}
+
+.row.invalid .tile,
+.tile.invalid {
+    color: #ff3f3f;
+    text-shadow: 0 0 12px rgba(246, 38, 38, 0.42);
+}
+
+.tile.correct {
+    color: var(--correct-color);
+    text-shadow: 0 0 12px rgba(38, 246, 110, 0.42);
+}
+
+.tile.present {
+    color: var(--present-color);
+    text-shadow: 0 0 12px rgba(246, 171, 38, 0.42);
+}
+
+.tile.absent {
+    color: #2f4e77;
+}
+
+
+/**
+ * Header Styles
+ */
+
+header {
+    position: relative;
+}
+
+h1 {
+    text-align: center;
+    line-height: 1;
+    margin: 0;
+}
+
+#logo {
+    width: 100px;
+}
+
+@media (min-width: 900px) {
+    #logo {
+        width: 150px;
+    }
+}
+
+output {
+    display: block;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 17px;
+    margin-top: 1rem;
+    position: absolute;
+    top: 0;
+    left: calc(100% + 10px);
+    width: 150px;
+}
+
+output:empty {
+    display: none;
+    color: #496e9e;
+}
+
+
+/**
+ * Keyboard Styles
+ */
+
+#keyboard {
+    width: 94vw;
+    max-width: 600px;
+}
+
+#keyboard .row>div {
+    width: 100%;
+    margin: 2px;
+}
+
+.key {
+    background: rgb(211, 214, 218);
+    border: 0;
+    border-radius: 4px;
+    height: 50px;
+    padding: 0 10px;
+    color: black;
+    font-weight: bold;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.key:active {
+    background: var(--absent-color);
+}
+
+.key.correct {
+    background: var(--correct-color);
+    color: white;
+}
+
+.key.present {
+    background: var(--present-color);
+}
+
+.key.absent {
+    background: var(--absent-color);
+    color: white;
+}
